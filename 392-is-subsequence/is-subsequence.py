@@ -5,22 +5,11 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        if not s:
-            return True
-        if not t:
-            return False
-        i=0
-        count=0
-        ans=False
-        for j in range(len(t)):
+        i,j=0,0
+        while i<len(s) and j<len(t):
             if s[i]==t[j]:
-                count+=1
                 i+=1
-                if count==len(s):
-                    ans=True
-                    break
-        return ans
-        
-            
+            j+=1
+        return i==len(s)
 
         
