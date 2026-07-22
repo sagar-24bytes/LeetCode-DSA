@@ -14,11 +14,8 @@ class Solution(object):
         temp=head
         s=set(nums)
         while temp:
-            if temp.next and temp.val in s and temp.next.val not in s:
+            if temp.val in s and ( not temp.next or temp.next.val not in s):
                 ans+=1
-            elif temp.val in s and not temp.next:
-                ans+=1
-                break
             temp=temp.next
 
         return ans 
