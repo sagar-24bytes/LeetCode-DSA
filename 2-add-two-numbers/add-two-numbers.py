@@ -16,27 +16,19 @@ class Solution(object):
         curr=dummy
         carry=0
         while temp1 or temp2:
-            if temp1 and temp2:
-                total=temp1.val+temp2.val+carry
-            if not temp1 and temp2:
-                total=temp2.val+carry
-            if temp1 and not temp2:
-                total=temp1.val+carry
-            carry=0
-            if total<10:
-                new_node =ListNode(total)
-                curr.next=new_node
-                curr=new_node
-            else:
-                carry=total//10
-                num=total%10
-                new_node= ListNode(num)
-                curr.next=new_node
-                curr=new_node
+            total=carry
+            if temp1:
+                total+=temp1.val
+            if temp2:
+                total+=temp2.val
+
+            carry=total//10
+            num=total%10
+            new_node= ListNode(num)
+            curr.next=new_node
+            curr=new_node
             if temp1:
                 temp1=temp1.next
-            
-            
             if temp2:
                 temp2=temp2.next
         if carry!=0:
