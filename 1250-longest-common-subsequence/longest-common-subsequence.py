@@ -5,16 +5,15 @@ class Solution(object):
         :type text2: str
         :rtype: int
         """
-        memo={}
-        def func(i,j):
-            if i<0 or j<0:
-                return 0
-            if (i,j) in memo:
-                return memo[(i,j)]
-            if text1[i]==text2[j]:
-                memo[(i,j)]=1+func(i-1,j-1)
-            else:
-                memo[(i,j)]=max(func(i,j-1),func(i-1,j))
-            return memo[(i,j)]
-        return func(len(text1)-1,len(text2)-1)
+        r=len(text1)
+        c=len(text2)
+        dp=[[0]*(c+1) for _ in range(r+1)]
+        for i in range(1,r+1):
+            for j in range(1,c+1):
+                if text1[i-1]==text2[j-1]:
+                    dp[i][j]=1+dp[i-1][j-1]
+                else:
+                    dp[i][j]=max(dp[i-1][j],dp[i][j-1])
+        return dp[r][c]
+
         
