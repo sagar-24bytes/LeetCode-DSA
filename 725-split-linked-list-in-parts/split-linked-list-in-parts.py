@@ -27,13 +27,12 @@ class Solution(object):
         for i in range(k):
             dummy=temp
             curr_size=base+(1 if i<extra else 0)
-            # extra-=1
             x=0
             while temp and x<curr_size:
                 x+=1
                 prev=temp
                 temp=temp.next
-                # prev.next=None
+
             if prev:
                 prev.next=None
             ans.append(dummy)
