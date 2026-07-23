@@ -10,9 +10,9 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        dummy=ListNode(0)
-        dummy.next=head
-        fast,slow=dummy,dummy
+        if not head:
+            return False
+        fast,slow=head,head
         while fast and fast.next:
             fast=fast.next.next
             slow=slow.next
